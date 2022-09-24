@@ -24,7 +24,7 @@ using namespace std;
 // clang-format off
 /* accelration */
 // 高速バイナリ生成
-#pragma GCC target("avx")
+
 #pragma GCC optimize("O3")
 #pragma GCC optimize("unroll-loops")
 

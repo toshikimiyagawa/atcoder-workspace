@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/atcoder_workspace.dir/abc113/D/main.cpp.o  -o atcoder_workspace 

@@ -1,0 +1,9 @@
+4 4
+ab
+cd
+ef
+gh
+hoge
+fuga
+____
+ab__cd_ef_gh

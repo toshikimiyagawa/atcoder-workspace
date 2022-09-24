@@ -1,4 +1,4 @@
-C:\Windows\system32\wsl.exe --distribution Ubuntu-20.04 --exec /usr/bin/zsh -c "export CMAKE_COLOR_DIAGNOSTICS=ON && export CLION_IDE=TRUE && export JETBRAINS_IDE=TRUE && cd /mnt/c/Users/toshi/develop/atcoder-workspace/cmake-build-debug && /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G 'CodeBlocks - Unix Makefiles' -S /mnt/c/Users/toshi/develop/atcoder-workspace -B /mnt/c/Users/toshi/develop/atcoder-workspace/cmake-build-debug"
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/g++ -G Ninja /Users/toshiki/Library/CloudStorage/OneDrive-個人用/ghq/github.com/toshikimiyagawa/atcoder-workspace
 -- Configuring done
 -- Generating done
--- Build files have been written to: /mnt/c/Users/toshi/develop/atcoder-workspace/cmake-build-debug
+-- Build files have been written to: /Users/toshiki/Library/CloudStorage/OneDrive-個人用/ghq/github.com/toshikimiyagawa/atcoder-workspace/cmake-build-debug
