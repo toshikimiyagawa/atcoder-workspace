@@ -1,4 +1,0 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/g++ -G Ninja /Users/toshiki/Library/CloudStorage/OneDrive-個人用/ghq/github.com/toshikimiyagawa/atcoder-workspace
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/toshiki/Library/CloudStorage/OneDrive-個人用/ghq/github.com/toshikimiyagawa/atcoder-workspace/cmake-build-debug

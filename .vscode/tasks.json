@@ -1,0 +1,27 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "competitiveTestSample",
+      "type": "shell",
+      "command": "cd ${fileDirname} && g++ -O0 -std=c++17 -D_GLIBCXX_DEBUG -I ~/ghq/github.com/atcoder/ac-library/ ${fileBasename} && atcoder-tools test",
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+      }
+    },
+    {
+      "label": "competitiveSubmit",
+      "type": "shell",
+      "command": "cd ${fileDirname} && g++ -O0 -std=c++17 -D_GLIBCXX_DEBUG -I ~/ghq/github.com/atcoder/ac-library/ ${fileBasename} && atcoder-tools submit -u",
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+      }
+    }
+  ]
+}
