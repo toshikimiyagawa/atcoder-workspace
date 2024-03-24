@@ -1,0 +1,204 @@
+#include <bits/stdc++.h>
+
+#include <algorithm>
+#include <atcoder/all>
+#include <bitset>
+#include <cassert>
+#include <cmath>
+#include <cstdio>
+#include <cstdlib>
+#include <ctime>
+#include <deque>
+#include <fstream>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <queue>
+#include <set>
+#include <sstream>
+#include <stack>
+#include <string>
+#include <utility>
+#include <vector>
+
+using namespace std;
+using namespace atcoder;
+
+// clang-format off
+/* accelration */
+// 高速バイナリ生成
+#pragma GCC optimize("O3")
+#pragma GCC optimize("unroll-loops")
+
+// cin cout の結びつけ解除, stdioと同期しない(入出力非同期化)
+// cとstdの入出力を混在させるとバグるので注意
+struct Fast {
+    Fast() {
+        std::cin.tie(0);
+        ios::sync_with_stdio(false);
+    }
+} fast;
+
+/* alias */
+using ull = unsigned long long;
+using ll = long long;
+using vi = vector<int>;
+using vl = vector<long>;
+using vll = vector<long long>;
+using vvi = vector<vi>;
+using vvl = vector<vl>;
+using vvll = vector<vll>;
+using vs = vector<string>;
+using pii = pair<int, int>;
+
+/* define short */
+#define pb push_back
+#define mp make_pair
+#define all(obj) (obj).begin(), (obj).end()
+#define YESNO(bool) if(bool){cout<<"YES"<<endl;}else{cout<<"NO"<<endl;}
+#define yesno(bool) if(bool){cout<<"yes"<<endl;}else{cout<<"no"<<endl;}
+#define YesNo(bool) if(bool){cout<<"Yes"<<endl;}else{cout<<"No"<<endl;}
+
+/* REP macro */
+#define reps(i, a, n) for (ll i = (a); i < (ll)(n); ++i)
+#define rep(i, n) reps(i, 0, n)
+#define rrep(i, n) reps(i, 1, n + 1)
+#define repd(i, n) for(ll i=n-1;i>=0;i--)
+#define rrepd(i, n) for(ll i=n;i>=1;i--)
+
+/* debug */
+// 標準エラー出力を含む提出はrejectされる場合もあるので注意
+#define debug(x) cerr << "\033[33m(line:" << __LINE__ << ") " << #x << ": " << x << "\033[m" << endl;
+
+// search_length: 走査するベクトル長の上限(先頭から何要素目までを検索対象とするか、1始まりで)
+template<typename T>
+inline bool vector_finder(std::vector<T> vec, T element, unsigned int search_length) {
+    auto itr = std::find(vec.begin(), vec.end(), element);
+    size_t index = std::distance(vec.begin(), itr);
+    if (index == vec.size() || index >= search_length) { return false; } else { return true; }
+}
+
+template<typename T>
+inline void print(const vector<T> &v, string s = " ") {
+    rep(i, v.size()) cout << v[i] << (i != (ll) v.size() - 1 ? s : "\n");
+}
+
+template<typename T, typename S>
+inline void print(const pair<T, S> &p) { cout << p.first << " " << p.second << endl; }
+
+template<typename T>
+inline void print(const T &x) { cout << x << "\n"; }
+
+template<typename T, typename S>
+inline void print(const vector<pair<T, S>> &v) { for (auto &&p: v) print(p); }
+
+// 第一引数と第二引数を比較し、第一引数(a)をより大きい/小さい値に上書き
+template<typename T>
+inline bool chmin(T &a, const T &b) {
+    bool compare = a > b;
+    if (a > b) a = b;
+    return compare;
+}
+
+template<typename T>
+inline bool chmax(T &a, const T &b) {
+    bool compare = a < b;
+    if (a < b) a = b;
+    return compare;
+}
+
+const ll INF = 1e18;
+// clang-format on
+using S = ll;
+using F = pair<ll, ll>;
+
+ll op(ll a, ll b) { return max(a, b); }
+
+ll mapping(pair<ll, ll> f, ll x) {
+    // cout << "mapping " << f.first << " " << f.second << " " << x << endl;
+    if (x >= f.first && x <= f.second) {
+        // cout << "x" << f.second << endl;
+        return f.second;
+    } else {
+        return x;
+    }
+}
+
+pair<ll, ll> composition(pair<ll, ll> f, pair<ll, ll> g) {
+    // cout << "c " << f.first << " " << f.second << " " << g.first << " "
+    //      << g.second << endl;
+    if (f.first <= g.second && f.first >= g.first && g.second <= f.second) {
+        return {g.first, f.second};
+    } else if (g.first == 0 && g.second == 0) {
+        return f;
+    } else {
+        return g;
+    }
+}
+
+ll e() { return 0; }
+
+pair<ll, ll> id() { return {0, 0}; }
+
+void solve(long long N, long long Q, std::vector<long long> A,
+           std::vector<long long> I, std::vector<long long> x) {
+    std::cout << std::fixed << std::setprecision(10);
+    lazy_segtree<ll, op, e, pair<ll, ll>, mapping, composition, id> seg(Q + 1);
+    vll s(N, 0);
+    vector<vector<pair<ll, ll>>> z(N + Q);
+    rep(i, Q) {
+        ll idx = I[i] - 1;
+        // cout << idx << " " << A[idx] << " " << s[idx] << " " << i << endl;
+        if (A[idx] < N + Q) {
+            z[A[idx]].pb({s[idx], i});
+        }
+        A[idx] = x[i];
+        s[idx] = i;
+    }
+    rep(i, N) {
+        if (A[i] < N + Q) {
+            z[A[i]].pb({s[i], Q});
+        }
+    }
+    // rep(i, N + Q) {
+    //     rep(j, z[i].size()) {
+    //         cout << i << " " << z[i][j].first << " " << z[i][j].second << endl;
+    //     }
+    // }
+    rep(i, N + Q) {
+        // cout << i << endl;
+        rep(j, z[i].size()) {
+            // cout << z[i][j].first << " " << z[i][j].second << " " << i << " "
+            //      << i + 1 << endl;
+            seg.apply(z[i][j].first, z[i][j].second, {i, i + 1});
+        }
+        // rep(j, Q + 1) { cout << seg.get(j) << " "; }
+        // cout << endl;
+        if (seg.all_prod() <= i) {
+            break;
+        }
+    }
+    rep(i, Q) { cout << seg.get(i) << endl; }
+}
+
+// Generated by 2.13.0 https://github.com/kyuridenamida/atcoder-tools  (tips:
+// You use the default template now. You can remove this line by using your
+// custom template)
+int main() {
+    long long N;
+    cin >> N;
+    long long Q;
+    cin >> Q;
+    std::vector<long long> A(N);
+    for (int i = 0; i < N; i++) {
+        cin >> A[i];
+    }
+    std::vector<long long> I(Q);
+    std::vector<long long> x(Q);
+    for (int i = 0; i < Q; i++) {
+        cin >> I[i];
+        cin >> x[i];
+    }
+    solve(N, Q, std::move(A), std::move(I), std::move(x));
+    return 0;
+}

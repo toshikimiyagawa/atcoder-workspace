@@ -100,10 +100,11 @@ inline bool chmin(T &a, const T &b) {
     return compare;
 }
 
-template<typename T>
+template <typename T>
 inline bool chmax(T &a, const T &b) {
     bool compare = a < b;
     if (a < b) a = b;
+
     return compare;
 }
 
@@ -112,6 +113,7 @@ void solve(long long B, long long G) {
     std::cout << std::fixed << std::setprecision(10);
     if (B > G) {
         cout << "Bat" << endl;
+
     } else {
         cout << "Glove" << endl;
     }

@@ -1,0 +1,5 @@
+a
+3
+3 ab abc abcdef
+4 f c cd bcdef
+2 ef a
