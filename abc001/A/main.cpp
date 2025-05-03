@@ -1,3 +1,4 @@
+#include <bits/stdc++.h>
 #include <atcoder/all>
 #include <iostream>
 #include <sstream>
@@ -18,7 +19,6 @@
 #include <ctime>
 #include <cstdio>
 #include <cassert>
-#include <bits/stdc++.h>
 
 using namespace std;
 using namespace atcoder;
