@@ -1,19 +1,16 @@
 {
     "configurations": [
         {
-            "name": "Mac",
+            "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "~/ghq/github.com/atcoder/ac-library/"
+                "~/ac-library/"
             ],
             "defines": [],
-            "macFrameworkPath": [
-                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
-            ],
-            "compilerPath": "/opt/homebrew/bin/g++",
+            "compilerPath": "/usr/bin/gcc",
             "cStandard": "c17",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "macos-gcc-arm64"
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "linux-gcc-arm64"
         }
     ],
     "version": 4

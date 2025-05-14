@@ -1,2 +1,2 @@
--I/Users/toshiki/ghq/github.com/atcoder/ac-library/
+-I~/ghq/github.com/atcoder/ac-library/
 -std=c++17

@@ -6,17 +6,7 @@
     {
       "label": "competitiveTestSample",
       "type": "shell",
-      "command": "cd ${fileDirname} && g++ -O0 -std=c++17 -D_GLIBCXX_DEBUG -I ~/ghq/github.com/atcoder/ac-library/ ${fileBasename} && atcoder-tools test",
-      "presentation": {
-        "reveal": "always",
-        "focus": true,
-        "panel": "shared",
-      }
-    },
-    {
-      "label": "competitiveSubmit",
-      "type": "shell",
-      "command": "cd ${fileDirname} && g++ -O0 -std=c++17 -D_GLIBCXX_DEBUG -I ~/ghq/github.com/atcoder/ac-library/ ${fileBasename} && atcoder-tools submit -u",
+      "command": "cd ${fileDirname} && g++ -O0 -std=c++17 -D_GLIBCXX_DEBUG -I ~/ac-library/ ${fileBasename} && atcoder-tools test",
       "presentation": {
         "reveal": "always",
         "focus": true,
